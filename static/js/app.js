@@ -1,25 +1,25 @@
+
 const ranks = ["A","K","Q","J","10","9","8","7","6","5","4","3","2"];
 const suits = ["♠","♥","♦","♣"];
 
 let deck = [];
-let selected = null;
+let selectedSlot = null;
 
-function init(){
+function initDeck(){
     deck = [];
-
     for(let r of ranks){
         for(let s of suits){
-            deck.push(r+s);
+            deck.push(r + s);
         }
     }
 }
 
-init();
+initDeck();
 
-// 等页面加载完再绑定（关键！！！）
+// 初始化点击绑定（关键）
 window.onload = function(){
 
-    let slots = ["hero1","hero2","b1","b2","b3","b4","b5"];
+    const slots = ["hero1","hero2","b1","b2","b3","b4","b5"];
 
     slots.forEach(id=>{
         let el = document.getElementById(id);
@@ -35,7 +35,7 @@ window.onload = function(){
 // 打开牌库
 function openDeck(id){
 
-    selected = id;
+    selectedSlot = id;
 
     let panel = document.getElementById("deck");
     panel.innerHTML = "";
@@ -55,10 +55,10 @@ function openDeck(id){
     });
 }
 
-// 选牌
+// 选择牌
 function pick(card){
 
-    document.getElementById(selected).innerText = card;
+    document.getElementById(selectedSlot).innerText = card;
 
     deck = deck.filter(c => c !== card);
 
