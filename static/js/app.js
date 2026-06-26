@@ -12,3 +12,4 @@ for (let r of ranks){
 }
 
 console.log(deck);
+document.getElementById("hero1").innerHTML = deck[0];
