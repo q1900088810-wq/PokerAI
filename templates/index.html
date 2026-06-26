@@ -1,11 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <title>Poker Research AI</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Poker Research AI</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
 </head>
+
 <body>
 
-<h1>Poker Research AI</h1>
+<div class="container">
+
+    <div class="panel">
+
+        <div class="title">
+            Hero 手牌
+        </div>
+
+        <div class="card-slot">?</div>
+        <div class="card-slot">?</div>
+
+    </div>
+
+    <div class="panel">
+
+        <div class="title">
+            公共牌
+        </div>
+
+        <div class="card-slot">?</div>
+        <div class="card-slot">?</div>
+        <div class="card-slot">?</div>
+        <div class="card-slot">?</div>
+        <div class="card-slot">?</div>
+
+    </div>
+
+    <div class="panel">
+
+        <div class="title">
+            玩家人数
+        </div>
+
+        <select>
+
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option selected>9</option>
+
+        </select>
+
+    </div>
+
+</div>
 
 </body>
 </html>
