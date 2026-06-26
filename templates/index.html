@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Poker AI Analyzer</title>
+<title>Poker AI</title>
 
 <style>
 
@@ -15,24 +15,14 @@ body{
     font-family:Arial;
 }
 
-.container{
-    padding:15px;
-}
-
 .panel{
-    background:#1c2430;
-    margin-bottom:15px;
     padding:12px;
+    margin:10px;
+    background:#1c2430;
     border-radius:10px;
 }
 
-.title{
-    margin-bottom:8px;
-    font-weight:bold;
-}
-
-/* 牌 */
-.card-slot{
+.card{
     width:60px;
     height:80px;
     background:white;
@@ -41,21 +31,21 @@ body{
     align-items:center;
     justify-content:center;
     border-radius:8px;
-    margin-right:8px;
-    font-weight:bold;
+    margin:5px;
     cursor:pointer;
+    font-weight:bold;
 }
 
-#deckPanel{
+/* 牌库 */
+#deck{
     position:fixed;
     top:0;
     left:0;
     width:100%;
     height:100%;
     background:rgba(0,0,0,0.85);
-    display:flex;
+    display:none;
     flex-wrap:wrap;
-    gap:8px;
     padding:15px;
     overflow:auto;
     z-index:999;
@@ -70,8 +60,9 @@ body{
     align-items:center;
     justify-content:center;
     border-radius:6px;
-    font-weight:bold;
+    margin:5px;
     cursor:pointer;
+    font-weight:bold;
 }
 
 </style>
@@ -80,31 +71,25 @@ body{
 
 <body>
 
-<div class="container">
-
-    <!-- Hero -->
-    <div class="panel">
-        <div class="title">Hero 手牌</div>
-        <div class="card-slot" id="hero1" onclick="openDeck('hero1')">?</div>
-        <div class="card-slot" id="hero2" onclick="openDeck('hero2')">?</div>
-    </div>
-
-    <!-- 公共牌 -->
-    <div class="panel">
-        <div class="title">公共牌</div>
-
-        <div class="card-slot" id="b1" onclick="openDeck('b1')">?</div>
-        <div class="card-slot" id="b2" onclick="openDeck('b2')">?</div>
-        <div class="card-slot" id="b3" onclick="openDeck('b3')">?</div>
-        <div class="card-slot" id="b4" onclick="openDeck('b4')">?</div>
-        <div class="card-slot" id="b5" onclick="openDeck('b5')">?</div>
-
-    </div>
-
+<div class="panel">
+    <h3>Hero</h3>
+    <div id="hero1" class="card">?</div>
+    <div id="hero2" class="card">?</div>
 </div>
+
+<div class="panel">
+    <h3>公共牌</h3>
+    <div id="b1" class="card">?</div>
+    <div id="b2" class="card">?</div>
+    <div id="b3" class="card">?</div>
+    <div id="b4" class="card">?</div>
+    <div id="b5" class="card">?</div>
+</div>
+
+<!-- 牌库 -->
+<div id="deck"></div>
 
 <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 
 </body>
-
 </html>
