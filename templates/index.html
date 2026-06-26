@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Poker AI</title>
+<title>Poker AI Analyzer</title>
 
 <style>
 
@@ -16,22 +16,29 @@ body{
 }
 
 .panel{
-    padding:12px;
     margin:10px;
+    padding:12px;
     background:#1c2430;
     border-radius:10px;
 }
 
+.title{
+    margin-bottom:8px;
+    font-weight:bold;
+}
+
+/* 手牌 / 公共牌 */
 .card{
-    width:60px;
-    height:80px;
+    width:85px;
+    height:115px;
     background:white;
     color:black;
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    border-radius:8px;
+    border-radius:10px;
     margin:5px;
+    font-size:20px;
     cursor:pointer;
     font-weight:bold;
 }
@@ -52,17 +59,24 @@ body{
 }
 
 .deck-card{
-    width:55px;
-    height:75px;
+    width:80px;
+    height:110px;
     background:white;
     color:black;
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:6px;
-    margin:5px;
-    cursor:pointer;
+    border-radius:10px;
+    margin:6px;
+    font-size:18px;
     font-weight:bold;
+    cursor:pointer;
+}
+
+/* 人数选择 */
+select{
+    padding:8px;
+    font-size:16px;
 }
 
 </style>
@@ -71,19 +85,38 @@ body{
 
 <body>
 
+<!-- 玩家人数 -->
 <div class="panel">
-    <h3>Hero</h3>
-    <div id="hero1" class="card">?</div>
-    <div id="hero2" class="card">?</div>
+    <div class="title">玩家人数</div>
+    <select id="playerCount">
+        <option value="2">2人</option>
+        <option value="3">3人</option>
+        <option value="4">4人</option>
+        <option value="5">5人</option>
+        <option value="6">6人</option>
+        <option value="7">7人</option>
+        <option value="8">8人</option>
+        <option value="9" selected>9人</option>
+    </select>
 </div>
 
+<!-- Hero -->
 <div class="panel">
-    <h3>公共牌</h3>
-    <div id="b1" class="card">?</div>
-    <div id="b2" class="card">?</div>
-    <div id="b3" class="card">?</div>
-    <div id="b4" class="card">?</div>
-    <div id="b5" class="card">?</div>
+    <div class="title">Hero 手牌</div>
+    <div class="card" id="hero1">?</div>
+    <div class="card" id="hero2">?</div>
+</div>
+
+<!-- 公共牌 -->
+<div class="panel">
+    <div class="title">公共牌</div>
+
+    <div class="card" id="b1">?</div>
+    <div class="card" id="b2">?</div>
+    <div class="card" id="b3">?</div>
+    <div class="card" id="b4">?</div>
+    <div class="card" id="b5">?</div>
+
 </div>
 
 <!-- 牌库 -->
