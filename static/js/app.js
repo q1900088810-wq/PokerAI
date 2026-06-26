@@ -4,7 +4,6 @@ const suits = ["♠","♥","♦","♣"];
 let deck = [];
 let selectedSlot = null;
 
-// 生成52张牌
 function initDeck(){
     deck = [];
     for (let r of ranks){
@@ -16,35 +15,53 @@ function initDeck(){
 
 initDeck();
 
-// 点击牌位
-function selectSlot(slotId){
+// 打开牌库
+function openDeck(slotId){
     selectedSlot = slotId;
-    showDeck();
+
+    let panel = document.createElement("div");
+    panel.id = "deckPanel";
+    panel.style = `
+        position:fixed;
+        top:0;left:0;
+        width:100%;height:100%;
+        background:rgba(0,0,0,0.85);
+        display:flex;
+        flex-wrap:wrap;
+        padding:20px;
+        gap:8px;
+        overflow:auto;
+    `;
+
+    deck.forEach(card=>{
+        let c = document.createElement("div");
+        c.innerHTML = card;
+        c.style = `
+            width:50px;height:70px;
+            background:white;
+            color:black;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            border-radius:6px;
+            font-weight:bold;
+        `;
+
+        c.onclick = function(){
+            pickCard(card);
+        };
+
+        panel.appendChild(c);
+    });
+
+    document.body.appendChild(panel);
 }
 
-// 显示牌库（弹层）
-function showDeck(){
-
-    let html = "<div id='deckPanel' style='position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:flex;flex-wrap:wrap;align-content:flex-start;padding:20px;gap:10px;'>";
-
-    for (let card of deck){
-        html += `<div onclick="pickCard('${card}')" 
-        style="width:50px;height:70px;background:white;color:black;display:flex;align-items:center;justify-content:center;border-radius:6px;font-weight:bold;">
-        ${card}
-        </div>`;
-    }
-
-    html += "</div>";
-
-    document.body.innerHTML += html;
-}
-
-// 选择牌
+// 选牌
 function pickCard(card){
 
-    document.getElementById(selectedSlot).innerHTML = card;
+    document.getElementById(selectedSlot).innerText = card;
 
-    // 从牌库移除
     deck = deck.filter(c => c !== card);
 
     document.getElementById("deckPanel").remove();
