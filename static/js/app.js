@@ -1,1 +1,1 @@
-alert("app.js 已加载");
+document.body.innerHTML += "<h2 style='color:red'>JS加载成功</h2>";
